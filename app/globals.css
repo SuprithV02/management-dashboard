@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ededed;
     --foreground: #ededed;
   }
 }
@@ -23,4 +23,74 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@import "tailwindcss";
+
+/* ---------- Root Design Tokens ---------- */
+:root {
+  /* Background palette */
+  --background: #f5f7fb; /* soft dashboard gray */
+  --card-background: #ffffff; /* cards stay white */
+
+  /* Text colors */
+  --foreground: #0f172a; /* slate-900 */
+  --muted-foreground: #64748b; /* slate-500 */
+
+  /* Brand */
+  --primary: #2563eb; /* blue-600 */
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+}
+
+/* ---------- Optional Dark Mode Ready ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a; /* slate-900 */
+    --card-background: #1e293b; /* slate-800 */
+    --foreground: #f1f5f9; /* slate-100 */
+    --muted-foreground: #94a3b8; /* slate-400 */
+  }
+}
+
+/* ---------- Base Styles ---------- */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif;
+
+  /* Improves text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Utility Layer Extensions ---------- */
+@layer utilities {
+  .bg-card {
+    background-color: var(--card-background);
+  }
+
+  .text-muted {
+    color: var(--muted-foreground);
+  }
+
+  .border-subtle {
+    border-color: #e2e8f0; /* slate-200 */
+  }
 }
