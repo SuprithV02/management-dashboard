@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Container, Grid } from "@mui/material";
 import Header from "./components/layout/Header";
 import KpiCard from "./components/kpi/KpiCard";
@@ -6,8 +8,28 @@ import PortfolioRetention from "./components/sections/PortfolioRetention";
 import DistributionPerformance from "./components/sections/DistributionPerformance";
 import OperationalEfficiency from "./components/sections/OperationalEfficiency";
 import Footer from "./components/layout/Footer";
+import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
+  const [selectedYear, setSelectedYear] = useState("FY 2024 - Q3");
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      console.log("Fetching data for:", selectedYear);
+      const res = await fetch(
+        `/api/dashboard?year=${encodeURIComponent(selectedYear)}`,
+      );
+      const json = await res.json();
+      console.log("API response:", json);
+      setData(json);
+    }
+
+    fetchData();
+  }, [selectedYear]);
+
+  console.log("Current data state:", data?.kpis);
+
   return (
     <Box
       sx={{
@@ -18,7 +40,7 @@ export default function DashboardPage() {
       }}
     >
       {/* HEADER */}
-      <Header />
+      <Header selectedYear={selectedYear} onYearChange={setSelectedYear} />
 
       {/* SCROLLABLE CONTENT */}
       <Box

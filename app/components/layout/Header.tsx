@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AppBar,
   Toolbar,
@@ -10,7 +12,12 @@ import {
   Button,
 } from "@mui/material";
 
-export default function Header() {
+interface HeaderProps {
+  selectedYear: string;
+  onYearChange: (year: string) => void;
+}
+
+export default function Header({ selectedYear, onYearChange }: HeaderProps) {
   return (
     <AppBar
       position="sticky"
@@ -39,9 +46,15 @@ export default function Header() {
           {/* Right Section */}
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <FormControl size="small">
-              <Select defaultValue="FY 2024 - Q3">
-                <MenuItem value="FY 2024 - Q3">FY 2024 - Q3</MenuItem>
-                <MenuItem value="FY 2024 - Q2">FY 2024 - Q2</MenuItem>
+              <Select
+                value={selectedYear} // <-- use controlled value
+                onChange={(e) => onYearChange(e.target.value)}
+              >
+                <MenuItem value="2024">FY 2024</MenuItem>
+                <MenuItem value="2023">FY 2023</MenuItem>
+                <MenuItem value="2022">FY 2022</MenuItem>
+                <MenuItem value="2021">FY 2021</MenuItem>
+                <MenuItem value="2020">FY 2020</MenuItem>
               </Select>
             </FormControl>
 
