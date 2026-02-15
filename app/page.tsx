@@ -11,15 +11,21 @@ import Footer from "./components/layout/Footer";
 import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
-  const [selectedYear, setSelectedYear] = useState("FY 2024 - Q3");
+  const [selectedYear, setSelectedYear] = useState(2024);
   const [data, setData] = useState<any>(null);
+
+  console.log("Selected Year:", selectedYear);
 
   useEffect(() => {
     async function fetchData() {
-      console.log("Fetching data for:", selectedYear);
+      const yearToFetch = selectedYear || "FY 2024"; // fallback if selectedYear is empty
+      console.log("Fetching data for:", yearToFetch);
+
       const res = await fetch(
-        `/api/dashboard?year=${encodeURIComponent(selectedYear)}`,
+        `/api/dashboard?year=${encodeURIComponent(yearToFetch)}`,
       );
+
+      console.log("res", res);
       const json = await res.json();
       console.log("API response:", json);
       setData(json);

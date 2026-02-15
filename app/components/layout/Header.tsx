@@ -50,11 +50,11 @@ export default function Header({ selectedYear, onYearChange }: HeaderProps) {
                 value={selectedYear} // <-- use controlled value
                 onChange={(e) => onYearChange(e.target.value)}
               >
+                <MenuItem value="2020">FY 2025</MenuItem>
                 <MenuItem value="2024">FY 2024</MenuItem>
                 <MenuItem value="2023">FY 2023</MenuItem>
                 <MenuItem value="2022">FY 2022</MenuItem>
                 <MenuItem value="2021">FY 2021</MenuItem>
-                <MenuItem value="2020">FY 2020</MenuItem>
               </Select>
             </FormControl>
 

@@ -9,9 +9,11 @@ import {
   useTheme,
   Grid,
   Divider,
+  alpha,
 } from "@mui/material";
 
 import BoltIcon from "@mui/icons-material/Bolt";
+
 export default function OperationalEfficiency({ data }: any) {
   const theme = useTheme();
 
@@ -36,58 +38,47 @@ export default function OperationalEfficiency({ data }: any) {
   const slaData = [
     {
       name: "Customer Support Response",
-      percent: data?.slaItems[0]?.percent,
-      color: theme.palette.success.main,
+      percent: data?.slaItems[0]?.percent || 0,
     },
     {
       name: "Claim Payment Dispatch",
-      percent: data?.slaItems[1]?.percent,
-      color: theme.palette.success.main,
+      percent: data?.slaItems[1]?.percent || 0,
     },
     {
       name: "Network Hospital Addition",
-      percent: data?.slaItems[2]?.percent,
-      color: theme.palette.warning.main,
+      percent: data?.slaItems[2]?.percent || 0,
     },
     {
       name: "Complex Case Resolution",
-      percent: data?.slaItems[3]?.percent,
-      color: theme.palette.error.main,
+      percent: data?.slaItems[3]?.percent || 0,
     },
   ];
+
+  // Function to get darker SLA color
+  const getSLAColor = (percent: number) => {
+    if (percent > 90)
+      return "#15803d"; // okayish green
+    else if (percent >= 70)
+      return "#b45309"; // okayish amber
+    else return "#b91c1c"; // okayish red
+  };
 
   return (
     <Card elevation={2} sx={{ borderRadius: 3 }}>
       <CardContent>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
-            mb: 2,
-          }}
-        >
-          <BoltIcon
-            sx={{
-              color: theme.palette.primary.main,
-              fontSize: 26,
-            }}
-          />
+        {/* Header */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+          <BoltIcon sx={{ color: theme.palette.primary.main, fontSize: 26 }} />
           <Typography variant="h6" fontWeight={700}>
             Operational Efficiency
           </Typography>
         </Box>
 
-        {/* Light Grey Divider */}
-        <Divider
-          sx={{
-            mb: 4,
-            backgroundColor: "#e5e7eb",
-          }}
-        />
+        {/* Divider */}
+        <Divider sx={{ mb: 4, backgroundColor: "#e5e7eb" }} />
 
         <Grid container spacing={4}>
-          {/* LEFT SIDE */}
+          {/* LEFT SIDE: Turnaround Time */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               variant="subtitle2"
@@ -108,7 +99,6 @@ export default function OperationalEfficiency({ data }: any) {
                   }}
                 >
                   <Typography variant="body2">{item.name}</Typography>
-
                   <Typography variant="body2" fontWeight={600}>
                     {item.value} Days
                   </Typography>
@@ -116,17 +106,14 @@ export default function OperationalEfficiency({ data }: any) {
 
                 <LinearProgress
                   variant="determinate"
-                  value={(item.value / item.max) * 100}
-                  sx={{
-                    height: 6,
-                    borderRadius: 5,
-                  }}
+                  value={item.max ? (item.value / item.max) * 100 : 0}
+                  sx={{ height: 6, borderRadius: 5 }}
                 />
               </Box>
             ))}
           </Grid>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT SIDE: SLA Compliance */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               variant="subtitle2"
@@ -138,29 +125,37 @@ export default function OperationalEfficiency({ data }: any) {
             </Typography>
 
             <Grid container spacing={2}>
-              {slaData.map((item) => (
-                <Grid size={{ xs: 12, sm: 6 }} key={item.name}>
-                  <Box
-                    sx={{
-                      border: `1px solid ${theme.palette.divider}`,
-                      borderRadius: 2,
-                      p: 2,
-                    }}
-                  >
-                    <Typography variant="caption" color="text.secondary">
-                      {item.name}
-                    </Typography>
-
-                    <Typography
-                      variant="h6"
-                      fontWeight={700}
-                      sx={{ color: item.color, mt: 0.5 }}
+              {slaData.map((item) => {
+                const color = getSLAColor(item.percent);
+                return (
+                  <Grid size={{ xs: 12, sm: 6 }} key={item.name}>
+                    <Box
+                      sx={{
+                        borderRadius: 2,
+                        p: 2,
+                        backgroundColor: color,
+                        transition: "background-color 0.3s",
+                      }}
                     >
-                      {item.percent}%
-                    </Typography>
-                  </Box>
-                </Grid>
-              ))}
+                      <Typography
+                        variant="caption"
+                        color="rgba(255,255,255,0.8)"
+                        sx={{ fontWeight: 500 }}
+                      >
+                        {item.name}
+                      </Typography>
+
+                      <Typography
+                        variant="h6"
+                        fontWeight={700}
+                        sx={{ color: "#fff", mt: 0.5 }}
+                      >
+                        {item.percent}%
+                      </Typography>
+                    </Box>
+                  </Grid>
+                );
+              })}
             </Grid>
           </Grid>
         </Grid>

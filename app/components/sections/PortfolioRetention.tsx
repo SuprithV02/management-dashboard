@@ -18,49 +18,66 @@ export default function PortfolioRetention({ data }: any) {
   const theme = useTheme();
 
   // Data
-  const renewals = 72;
-  const newBiz = 28;
-  const lapseRatio = 5.8;
-
   const pieData = [
-    { name: "Renewals", value: data?.renewalMix?.renewalPercent },
-    { name: "New Biz", value: data?.renewalMix?.newBusinessPercent },
+    { name: "Renewals", value: data?.renewalMix?.renewalPercent || 0 },
+    { name: "New Biz", value: data?.renewalMix?.newBusinessPercent || 0 },
   ];
+
+  // Determine status color
+  const getStatusColor = (status: string | undefined) => {
+    if (status === "STABLE" || status === "STRONG") return "#15803d"; // green
+    return "#b91c1c"; // red
+  };
 
   return (
     <Card elevation={2} sx={{ borderRadius: 3, height: "100%" }}>
       <CardContent>
+        {/* Header */}
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
             gap: 1,
             mb: 2,
           }}
         >
-          <PieChartIcon
-            sx={{ color: theme.palette.primary.main, fontSize: 26 }}
-          />
-          <Typography variant="h6" fontWeight={700}>
-            Portfolio & Retention
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <PieChartIcon
+              sx={{ color: theme.palette.primary.main, fontSize: 26 }}
+            />
+            <Typography variant="h6" fontWeight={700}>
+              Portfolio & Retention
+            </Typography>
+          </Box>
+
+          {/* Status Box */}
+          <Box
+            sx={{
+              backgroundColor: getStatusColor(data?.status),
+              borderRadius: 1,
+              px: 2,
+              py: 0.5,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: 80,
+            }}
+          >
+            <Typography
+              variant="caption"
+              fontWeight={600}
+              sx={{ color: "#fff" }}
+            >
+              {data?.status || "UNKNOWN"}
+            </Typography>
+          </Box>
         </Box>
 
         {/* Light Grey Divider */}
-        <Divider
-          sx={{
-            mb: 3,
-            backgroundColor: "#e5e7eb",
-          }}
-        />
+        <Divider sx={{ mb: 3, backgroundColor: "#e5e7eb" }} />
 
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 4,
-          }}
-        >
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {/* LEFT SIDE - DONUT */}
           <Box
             sx={{
@@ -107,21 +124,10 @@ export default function PortfolioRetention({ data }: any) {
 
             {/* Indicators */}
             <Box
-              sx={{
-                mt: 3,
-                display: "flex",
-                justifyContent: "center",
-                gap: 4,
-              }}
+              sx={{ mt: 3, display: "flex", justifyContent: "center", gap: 4 }}
             >
               {/* Renewals */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 0.8,
-                }}
-              >
+              <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
                 <Box
                   sx={{
                     width: 8,
@@ -141,13 +147,7 @@ export default function PortfolioRetention({ data }: any) {
               </Box>
 
               {/* New Biz */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 0.8,
-                }}
-              >
+              <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
                 <Box
                   sx={{
                     width: 8,
@@ -173,11 +173,7 @@ export default function PortfolioRetention({ data }: any) {
             {/* Overall Retention Rate */}
             <Box mb={4}>
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  mb: 1,
-                }}
+                sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
               >
                 <Typography variant="body2" fontWeight={600}>
                   Overall Retention Rate
@@ -194,21 +190,14 @@ export default function PortfolioRetention({ data }: any) {
               <LinearProgress
                 variant="determinate"
                 value={data?.overallRetentionRate || 0}
-                sx={{
-                  height: 8,
-                  borderRadius: 5,
-                }}
+                sx={{ height: 8, borderRadius: 5 }}
               />
             </Box>
 
             {/* Lapse Ratio */}
             <Box>
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  mb: 1,
-                }}
+                sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
               >
                 <Typography variant="body2" fontWeight={600}>
                   Lapse Ratio
@@ -234,6 +223,22 @@ export default function PortfolioRetention({ data }: any) {
                 }}
               />
             </Box>
+
+            {/* Insight Box */}
+            {data?.insight && (
+              <Box
+                sx={{
+                  mt: 3,
+                  p: 2,
+                  borderRadius: 2,
+                  backgroundColor: theme.palette.grey[100],
+                }}
+              >
+                <Typography variant="body2" color="text.primary">
+                  "{data?.insight}"
+                </Typography>
+              </Box>
+            )}
           </Box>
         </Box>
       </CardContent>

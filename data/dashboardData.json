@@ -1,209 +1,103 @@
 [
   {
-    "year": 2020,
-    "meta": {
-      "fiscalYear": 2020,
-      "quarter": "Q4",
-      "product": "ALL",
-      "region": "ALL",
-      "currency": "USD",
-      "unit": "MILLION",
-      "generatedAt": "2020-12-31T14:35:00Z"
-    },
-    "kpis": {
-      "grossWrittenPremium": {
-        "value": 320.4,
-        "yoyChangePercent": 5.2,
-        "trend": "up"
-      },
-      "netEarnedPremium": {
-        "value": 295.1,
-        "yoyChangePercent": 4.3,
-        "trend": "up"
-      },
-      "claimsIncurred": {
-        "value": 210.3,
-        "yoyChangePercent": 7.1,
-        "trend": "up"
-      },
-      "lossRatio": { "value": 71.3, "target": 68.0, "variance": 3.3 },
-      "combinedRatio": {
-        "value": 98.5,
-        "yoyChangePercent": 1.2,
-        "trend": "down"
-      },
-      "operatingProfit": { "value": 22.6, "status": "AT_RISK" }
-    },
-    "claimsRisk": {
-      "claimsVolumeTrend": [
-        { "month": "Jan", "current": 15000, "previous": 14200 },
-        { "month": "Feb", "current": 15800, "previous": 15000 },
-        { "month": "Mar", "current": 16200, "previous": 15500 },
-        { "month": "Apr", "current": 17500, "previous": 16000 },
-        { "month": "May", "current": 16800, "previous": 15800 },
-        { "month": "Jun", "current": 18000, "previous": 17000 },
-        { "month": "Jul", "current": 19000, "previous": 17800 },
-        { "month": "Aug", "current": 18500, "previous": 17500 },
-        { "month": "Sep", "current": 20000, "previous": 18800 },
-        { "month": "Oct", "current": 19500, "previous": 18200 },
-        { "month": "Nov", "current": 20500, "previous": 19200 },
-        { "month": "Dec", "current": 21500, "previous": 20000 }
-      ],
-      "settlement": {
-        "ratio": 82,
-        "target": 85,
-        "avgProcessingDays": 7.2,
-        "improvementDays": 0.4
-      }
-    },
-    "portfolioRetention": {
-      "renewalMix": { "renewalPercent": 68, "newBusinessPercent": 32 },
-      "overallRetentionRate": 91.5,
-      "lapseRatio": 8.5,
-      "segmentRetention": { "corporate": 95, "individual": 88 },
-      "status": "VOLATILE",
-      "insight": "Pandemic-related uncertainty impacted individual renewals."
-    },
-    "distributionPerformance": {
-      "metric": "PREMIUM",
-      "Brokers": {
-        "value": 210.4,
-        "sharePercent": 66,
-        "lossRatio": 69
-      },
-      "DIGITAL_DIRECT": {
-        "value": 60.2,
-        "sharePercent": 19,
-        "lossRatio": 75
-      },
-      "Agents": {
-        "value": 49.8,
-        "sharePercent": 15,
-        "lossRatio": 72
-      }
-    },
-    "operationalEfficiency": {
-      "slaSummary": { "met": 6, "total": 10 },
-      "turnaroundTime": [
-        { "process": "UNDERWRITING", "days": 3.4, "benchmark": 3.0 },
-        { "process": "POLICY_ISSUANCE", "days": 1.4, "benchmark": 1.2 },
-        { "process": "CLAIMS_ADJUDICATION", "days": 6.0, "benchmark": 5.0 }
-      ],
-      "slaItems": [
-        {
-          "name": "Customer Support Response",
-          "percent": 90,
-          "status": "AMBER"
-        },
-        { "name": "Claim Payment Dispatch", "percent": 85, "status": "AMBER" },
-        { "name": "Network Hospital Addition", "percent": 70, "status": "RED" },
-        { "name": "Complex Case Resolution", "percent": 60, "status": "RED" }
-      ]
-    }
-  },
-  {
     "year": 2021,
     "meta": {
       "fiscalYear": 2021,
-      "quarter": "Q4",
-      "product": "ALL",
-      "region": "ALL",
+      "quarter": "Q2",
+      "product": "MOTOR",
+      "region": "NORTH_AMERICA",
       "currency": "USD",
       "unit": "MILLION",
-      "generatedAt": "2021-12-31T14:35:00Z"
+      "generatedAt": "2021-06-30T10:00:00Z"
     },
     "kpis": {
       "grossWrittenPremium": {
-        "value": 350.8,
-        "yoyChangePercent": 9.5,
+        "value": 485.7,
+        "yoyChangePercent": 8.4,
         "trend": "up"
       },
       "netEarnedPremium": {
-        "value": 320.7,
-        "yoyChangePercent": 8.7,
+        "value": 461.2,
+        "yoyChangePercent": 7.9,
         "trend": "up"
       },
       "claimsIncurred": {
-        "value": 225.4,
-        "yoyChangePercent": 7.2,
+        "value": 298.5,
+        "yoyChangePercent": 4.2,
         "trend": "up"
       },
-      "lossRatio": { "value": 70.3, "target": 66.0, "variance": 4.3 },
+      "lossRatio": { "value": 64.7, "target": 65.0, "variance": -0.3 },
       "combinedRatio": {
-        "value": 96.8,
-        "yoyChangePercent": -1.7,
-        "trend": "down"
+        "value": 94.1,
+        "yoyChangePercent": -2.3,
+        "trend": "up"
       },
-      "operatingProfit": { "value": 30.4, "status": "ON_TRACK" }
+      "operatingProfit": { "value": 58.3, "status": "ON_TRACK" }
     },
     "claimsRisk": {
       "claimsVolumeTrend": [
-        { "month": "Jan", "current": 15000, "previous": 14200 },
-        { "month": "Feb", "current": 15800, "previous": 15000 },
-        { "month": "Mar", "current": 16200, "previous": 15500 },
-        { "month": "Apr", "current": 17500, "previous": 16000 },
-        { "month": "May", "current": 16800, "previous": 15800 },
-        { "month": "Jun", "current": 18000, "previous": 17000 },
-        { "month": "Jul", "current": 19000, "previous": 17800 },
-        { "month": "Aug", "current": 18500, "previous": 17500 },
-        { "month": "Sep", "current": 20000, "previous": 18800 },
-        { "month": "Oct", "current": 19500, "previous": 18200 },
-        { "month": "Nov", "current": 20500, "previous": 19200 },
-        { "month": "Dec", "current": 21500, "previous": 20000 }
+        { "month": "Jan", "current": 22000, "previous": 20500 },
+        { "month": "Feb", "current": 21500, "previous": 19800 },
+        { "month": "Mar", "current": 23000, "previous": 21000 },
+        { "month": "Apr", "current": 24500, "previous": 22300 },
+        { "month": "May", "current": 25000, "previous": 23100 },
+        { "month": "Jun", "current": 26200, "previous": 24000 },
+        { "month": "Jul", "current": 27500, "previous": 25500 },
+        { "month": "Aug", "current": 26800, "previous": 25000 },
+        { "month": "Sep", "current": 28000, "previous": 26200 },
+        { "month": "Oct", "current": 27200, "previous": 25800 },
+        { "month": "Nov", "current": 29000, "previous": 27500 },
+        { "month": "Dec", "current": 30500, "previous": 28000 }
       ],
       "settlement": {
-        "ratio": 85,
-        "target": 85,
-        "avgProcessingDays": 6.5,
-        "improvementDays": 0.7
+        "ratio": 88,
+        "target": 87,
+        "avgProcessingDays": 5.8,
+        "improvementDays": 1.1
       }
     },
     "portfolioRetention": {
-      "renewalMix": { "renewalPercent": 70, "newBusinessPercent": 30 },
-      "overallRetentionRate": 92.8,
-      "lapseRatio": 7.2,
-      "segmentRetention": { "corporate": 96, "individual": 89 },
+      "renewalMix": { "renewalPercent": 74, "newBusinessPercent": 26 },
+      "overallRetentionRate": 93.2,
+      "lapseRatio": 6.8,
+      "segmentRetention": { "corporate": 97, "individual": 91 },
       "status": "STABLE",
-      "insight": "Retention improved with hybrid distribution strategy."
+      "insight": "Post-pandemic travel rebound drove strong motor policy renewals."
     },
     "distributionPerformance": {
       "metric": "PREMIUM",
       "Brokers": {
-        "value": 230.5,
-        "sharePercent": 65,
-        "lossRatio": 66
+        "value": 291.4,
+        "sharePercent": 60,
+        "lossRatio": 63
       },
       "DIGITAL_DIRECT": {
-        "value": 75.4,
-        "sharePercent": 21,
-        "lossRatio": 73
+        "value": 116.6,
+        "sharePercent": 24,
+        "lossRatio": 68
       },
       "Agents": {
-        "value": 44.9,
-        "sharePercent": 14,
-        "lossRatio": 70
+        "value": 77.7,
+        "sharePercent": 16,
+        "lossRatio": 65
       }
     },
     "operationalEfficiency": {
-      "slaSummary": { "met": 7, "total": 10 },
+      "slaSummary": { "met": 9, "total": 10 },
       "turnaroundTime": [
-        { "process": "UNDERWRITING", "days": 3.0, "benchmark": 3.0 },
-        { "process": "POLICY_ISSUANCE", "days": 1.1, "benchmark": 1.2 },
-        { "process": "CLAIMS_ADJUDICATION", "days": 5.4, "benchmark": 5.0 }
+        { "process": "UNDERWRITING", "days": 4.0, "benchmark": 3.0 },
+        { "process": "POLICY_ISSUANCE", "days": 3, "benchmark": 1.2 },
+        { "process": "CLAIMS_ADJUDICATION", "days": 7.5, "benchmark": 5.0 }
       ],
       "slaItems": [
         {
           "name": "Customer Support Response",
-          "percent": 93,
+          "percent": 97,
           "status": "GREEN"
         },
-        { "name": "Claim Payment Dispatch", "percent": 88, "status": "GREEN" },
-        {
-          "name": "Network Hospital Addition",
-          "percent": 78,
-          "status": "AMBER"
-        },
-        { "name": "Complex Case Resolution", "percent": 63, "status": "RED" }
+        { "name": "Claim Payment Dispatch", "percent": 95, "status": "GREEN" },
+        { "name": "Network Garage Approval", "percent": 92, "status": "GREEN" },
+        { "name": "Complex Case Resolution", "percent": 78, "status": "AMBER" }
       ]
     }
   },
@@ -211,105 +105,207 @@
     "year": 2022,
     "meta": {
       "fiscalYear": 2022,
-      "quarter": "Q4",
-      "product": "ALL",
-      "region": "ALL",
-      "currency": "USD",
+      "quarter": "Q3",
+      "product": "PROPERTY",
+      "region": "EUROPE",
+      "currency": "EUR",
       "unit": "MILLION",
-      "generatedAt": "2022-12-31T14:35:00Z"
+      "generatedAt": "2022-09-30T16:00:00Z"
     },
     "kpis": {
       "grossWrittenPremium": {
-        "value": 380.6,
-        "yoyChangePercent": 8.5,
-        "trend": "up"
-      },
-      "netEarnedPremium": {
-        "value": 350.2,
-        "yoyChangePercent": 9.2,
-        "trend": "up"
-      },
-      "claimsIncurred": {
-        "value": 235.7,
-        "yoyChangePercent": 4.6,
-        "trend": "up"
-      },
-      "lossRatio": { "value": 67.3, "target": 64.0, "variance": 3.3 },
-      "combinedRatio": {
-        "value": 94.2,
-        "yoyChangePercent": -2.6,
+        "value": 612.9,
+        "yoyChangePercent": -1.8,
         "trend": "down"
       },
-      "operatingProfit": { "value": 38.9, "status": "ON_TRACK" }
+      "netEarnedPremium": {
+        "value": 570.4,
+        "yoyChangePercent": -2.1,
+        "trend": "down"
+      },
+      "claimsIncurred": {
+        "value": 480.6,
+        "yoyChangePercent": 18.5,
+        "trend": "up"
+      },
+      "lossRatio": { "value": 84.3, "target": 70.0, "variance": 14.3 },
+      "combinedRatio": {
+        "value": 112.7,
+        "yoyChangePercent": 15.4,
+        "trend": "down"
+      },
+      "operatingProfit": { "value": 4.1, "status": "AT_RISK" }
     },
     "claimsRisk": {
       "claimsVolumeTrend": [
-        { "month": "Jan", "current": 15000, "previous": 14200 },
-        { "month": "Feb", "current": 15800, "previous": 15000 },
-        { "month": "Mar", "current": 16200, "previous": 15500 },
-        { "month": "Apr", "current": 17500, "previous": 16000 },
-        { "month": "May", "current": 16800, "previous": 15800 },
-        { "month": "Jun", "current": 18000, "previous": 17000 },
-        { "month": "Jul", "current": 19000, "previous": 17800 },
-        { "month": "Aug", "current": 18500, "previous": 17500 },
-        { "month": "Sep", "current": 20000, "previous": 18800 },
-        { "month": "Oct", "current": 19500, "previous": 18200 },
-        { "month": "Nov", "current": 20500, "previous": 19200 },
-        { "month": "Dec", "current": 21500, "previous": 20000 }
+        { "month": "Jan", "current": 9500, "previous": 8000 },
+        { "month": "Feb", "current": 9800, "previous": 8200 },
+        { "month": "Mar", "current": 10200, "previous": 8500 },
+        { "month": "Apr", "current": 11500, "previous": 9000 },
+        { "month": "May", "current": 12000, "previous": 9400 },
+        { "month": "Jun", "current": 13400, "previous": 10000 },
+        { "month": "Jul", "current": 18500, "previous": 11000 },
+        { "month": "Aug", "current": 22000, "previous": 11500 },
+        { "month": "Sep", "current": 25000, "previous": 12000 },
+        { "month": "Oct", "current": 21000, "previous": 12500 },
+        { "month": "Nov", "current": 17500, "previous": 13000 },
+        { "month": "Dec", "current": 15000, "previous": 13500 }
       ],
       "settlement": {
-        "ratio": 87,
-        "target": 85,
-        "avgProcessingDays": 6.0,
-        "improvementDays": 1.0
+        "ratio": 51,
+        "target": 83,
+        "avgProcessingDays": 12.4,
+        "improvementDays": -3.6
       }
     },
     "portfolioRetention": {
-      "renewalMix": { "renewalPercent": 71, "newBusinessPercent": 29 },
-      "overallRetentionRate": 93.6,
-      "lapseRatio": 6.4,
-      "segmentRetention": { "corporate": 97, "individual": 90 },
-      "status": "STABLE",
-      "insight": "Improved underwriting discipline supported margin expansion."
+      "renewalMix": { "renewalPercent": 58, "newBusinessPercent": 42 },
+      "overallRetentionRate": 84.1,
+      "lapseRatio": 15.9,
+      "segmentRetention": { "corporate": 89, "individual": 80 },
+      "status": "DECLINING",
+      "insight": "Extreme flooding events in Q3 caused major cat losses and triggered non-renewals in high-risk zones."
     },
     "distributionPerformance": {
       "metric": "PREMIUM",
-      "channels": [
-        {
-          "name": "BROKERS",
-          "value": 250.6,
-          "sharePercent": 66,
-          "lossRatio": 62
-        },
-        {
-          "name": "DIGITAL_DIRECT",
-          "value": 82.3,
-          "sharePercent": 22,
-          "lossRatio": 71
-        },
-        { "name": "AGENTS", "value": 47.7, "sharePercent": 12, "lossRatio": 68 }
-      ]
+      "Brokers": {
+        "value": 398.4,
+        "sharePercent": 65,
+        "lossRatio": 88
+      },
+      "DIGITAL_DIRECT": {
+        "value": 98.1,
+        "sharePercent": 16,
+        "lossRatio": 79
+      },
+      "Agents": {
+        "value": 116.4,
+        "sharePercent": 19,
+        "lossRatio": 82
+      }
     },
     "operationalEfficiency": {
-      "slaSummary": { "met": 8, "total": 10 },
+      "slaSummary": { "met": 3, "total": 10 },
       "turnaroundTime": [
-        { "process": "UNDERWRITING", "days": 2.7, "benchmark": 3.0 },
-        { "process": "POLICY_ISSUANCE", "days": 0.9, "benchmark": 1.2 },
-        { "process": "CLAIMS_ADJUDICATION", "days": 4.8, "benchmark": 5.0 }
+        { "process": "UNDERWRITING", "days": 5.2, "benchmark": 3.0 },
+        { "process": "POLICY_ISSUANCE", "days": 2.1, "benchmark": 1.2 },
+        { "process": "CLAIMS_ADJUDICATION", "days": 14.0, "benchmark": 5.0 }
       ],
       "slaItems": [
         {
           "name": "Customer Support Response",
-          "percent": 95,
-          "status": "GREEN"
+          "percent": 62,
+          "status": "RED"
         },
-        { "name": "Claim Payment Dispatch", "percent": 90, "status": "GREEN" },
+        { "name": "Claim Payment Dispatch", "percent": 55, "status": "RED" },
+        { "name": "Loss Assessor Deployment", "percent": 48, "status": "RED" },
+        { "name": "Complex Case Resolution", "percent": 35, "status": "RED" }
+      ]
+    }
+  },
+  {
+    "year": 2025,
+    "meta": {
+      "fiscalYear": 2025,
+      "quarter": "Q1",
+      "product": "LIFE",
+      "region": "ASIA_PACIFIC",
+      "currency": "USD",
+      "unit": "MILLION",
+      "generatedAt": "2023-03-31T09:00:00Z"
+    },
+    "kpis": {
+      "grossWrittenPremium": {
+        "value": 1104.5,
+        "yoyChangePercent": 14.6,
+        "trend": "up"
+      },
+      "netEarnedPremium": {
+        "value": 1055.2,
+        "yoyChangePercent": 13.8,
+        "trend": "up"
+      },
+      "claimsIncurred": {
+        "value": 620.4,
+        "yoyChangePercent": 9.1,
+        "trend": "up"
+      },
+      "lossRatio": { "value": 58.8, "target": 62.0, "variance": -3.2 },
+      "combinedRatio": {
+        "value": 88.4,
+        "yoyChangePercent": -4.1,
+        "trend": "up"
+      },
+      "operatingProfit": { "value": 196.3, "status": "EXCEEDING" }
+    },
+    "claimsRisk": {
+      "claimsVolumeTrend": [
+        { "month": "Jan", "current": 5200, "previous": 4800 },
+        { "month": "Feb", "current": 5400, "previous": 5000 },
+        { "month": "Mar", "current": 5600, "previous": 5100 },
+        { "month": "Apr", "current": 5300, "previous": 4900 },
+        { "month": "May", "current": 5700, "previous": 5200 },
+        { "month": "Jun", "current": 5900, "previous": 5400 },
+        { "month": "Jul", "current": 6100, "previous": 5600 },
+        { "month": "Aug", "current": 6000, "previous": 5500 },
+        { "month": "Sep", "current": 6300, "previous": 5800 },
+        { "month": "Oct", "current": 6200, "previous": 5700 },
+        { "month": "Nov", "current": 6500, "previous": 6000 },
+        { "month": "Dec", "current": 6700, "previous": 6200 }
+      ],
+      "settlement": {
+        "ratio": 91,
+        "target": 90,
+        "avgProcessingDays": 4.2,
+        "improvementDays": 1.8
+      }
+    },
+    "portfolioRetention": {
+      "renewalMix": { "renewalPercent": 82, "newBusinessPercent": 18 },
+      "overallRetentionRate": 96.4,
+      "lapseRatio": 3.6,
+      "segmentRetention": { "corporate": 98, "individual": 95 },
+      "status": "STRONG",
+      "insight": "Rising middle-class wealth and health awareness in APAC are driving record life policy persistency."
+    },
+    "distributionPerformance": {
+      "metric": "PREMIUM",
+      "Brokers": {
+        "value": 441.8,
+        "sharePercent": 40,
+        "lossRatio": 57
+      },
+      "DIGITAL_DIRECT": {
+        "value": 220.9,
+        "sharePercent": 20,
+        "lossRatio": 61
+      },
+      "Agents": {
+        "value": 441.8,
+        "sharePercent": 40,
+        "lossRatio": 59
+      }
+    },
+    "operationalEfficiency": {
+      "slaSummary": { "met": 10, "total": 10 },
+      "turnaroundTime": [
+        { "process": "UNDERWRITING", "days": 2.1, "benchmark": 3.0 },
+        { "process": "POLICY_ISSUANCE", "days": 0.8, "benchmark": 1.2 },
+        { "process": "CLAIMS_ADJUDICATION", "days": 3.9, "benchmark": 5.0 }
+      ],
+      "slaItems": [
         {
-          "name": "Network Hospital Addition",
-          "percent": 82,
+          "name": "Customer Support Response",
+          "percent": 99,
           "status": "GREEN"
         },
-        { "name": "Complex Case Resolution", "percent": 68, "status": "AMBER" }
+        { "name": "Claim Payment Dispatch", "percent": 98, "status": "GREEN" },
+        {
+          "name": "Policy Document Delivery",
+          "percent": 97,
+          "status": "GREEN"
+        },
+        { "name": "Complex Case Resolution", "percent": 95, "status": "GREEN" }
       ]
     }
   },
@@ -318,104 +314,104 @@
     "meta": {
       "fiscalYear": 2023,
       "quarter": "Q4",
-      "product": "ALL",
-      "region": "ALL",
+      "product": "CYBER",
+      "region": "GLOBAL",
       "currency": "USD",
       "unit": "MILLION",
-      "generatedAt": "2023-12-31T14:35:00Z"
+      "generatedAt": "2023-12-31T18:00:00Z"
     },
     "kpis": {
       "grossWrittenPremium": {
-        "value": 405.3,
-        "yoyChangePercent": 6.5,
+        "value": 89.3,
+        "yoyChangePercent": 42.1,
         "trend": "up"
       },
       "netEarnedPremium": {
-        "value": 370.8,
-        "yoyChangePercent": 5.9,
+        "value": 76.8,
+        "yoyChangePercent": 39.4,
         "trend": "up"
       },
       "claimsIncurred": {
-        "value": 240.2,
-        "yoyChangePercent": 1.9,
+        "value": 61.4,
+        "yoyChangePercent": 55.8,
         "trend": "up"
       },
-      "lossRatio": { "value": 64.8, "target": 62.0, "variance": 2.8 },
+      "lossRatio": { "value": 79.9, "target": 72.0, "variance": 7.9 },
       "combinedRatio": {
-        "value": 93.2,
-        "yoyChangePercent": -1.0,
+        "value": 104.3,
+        "yoyChangePercent": 9.6,
         "trend": "down"
       },
-      "operatingProfit": { "value": 44.1, "status": "ON_TRACK" }
+      "operatingProfit": { "value": 4.2, "status": "AT_RISK" }
     },
     "claimsRisk": {
       "claimsVolumeTrend": [
-        { "month": "Jan", "current": 15000, "previous": 14200 },
-        { "month": "Feb", "current": 15800, "previous": 15000 },
-        { "month": "Mar", "current": 16200, "previous": 15500 },
-        { "month": "Apr", "current": 17500, "previous": 16000 },
-        { "month": "May", "current": 16800, "previous": 15800 },
-        { "month": "Jun", "current": 18000, "previous": 17000 },
-        { "month": "Jul", "current": 19000, "previous": 17800 },
-        { "month": "Aug", "current": 18500, "previous": 17500 },
-        { "month": "Sep", "current": 20000, "previous": 18800 },
-        { "month": "Oct", "current": 19500, "previous": 18200 },
-        { "month": "Nov", "current": 20500, "previous": 19200 },
-        { "month": "Dec", "current": 21500, "previous": 20000 }
+        { "month": "Jan", "current": 410, "previous": 260 },
+        { "month": "Feb", "current": 390, "previous": 275 },
+        { "month": "Mar", "current": 450, "previous": 290 },
+        { "month": "Apr", "current": 520, "previous": 310 },
+        { "month": "May", "current": 600, "previous": 340 },
+        { "month": "Jun", "current": 680, "previous": 370 },
+        { "month": "Jul", "current": 750, "previous": 400 },
+        { "month": "Aug", "current": 820, "previous": 430 },
+        { "month": "Sep", "current": 910, "previous": 470 },
+        { "month": "Oct", "current": 980, "previous": 510 },
+        { "month": "Nov", "current": 1100, "previous": 560 },
+        { "month": "Dec", "current": 1250, "previous": 620 }
       ],
       "settlement": {
-        "ratio": 88,
-        "target": 85,
-        "avgProcessingDays": 5.8,
-        "improvementDays": 1.1
+        "ratio": 76,
+        "target": 80,
+        "avgProcessingDays": 18.5,
+        "improvementDays": -2.3
       }
     },
     "portfolioRetention": {
-      "renewalMix": { "renewalPercent": 72, "newBusinessPercent": 28 },
-      "overallRetentionRate": 94.0,
-      "lapseRatio": 6.0,
-      "segmentRetention": { "corporate": 98, "individual": 91 },
-      "status": "STABLE",
-      "insight": "Digital channel growth improved customer stickiness."
+      "renewalMix": { "renewalPercent": 55, "newBusinessPercent": 45 },
+      "overallRetentionRate": 87.0,
+      "lapseRatio": 13.0,
+      "segmentRetention": { "corporate": 91, "individual": 80 },
+      "status": "VOLATILE",
+      "insight": "Surge in ransomware attacks and data breach incidents is inflating loss ratios, prompting insurers to tighten underwriting criteria at renewal."
     },
     "distributionPerformance": {
       "metric": "PREMIUM",
-      "channels": [
-        {
-          "name": "BROKERS",
-          "value": 265.4,
-          "sharePercent": 65,
-          "lossRatio": 60
-        },
-        {
-          "name": "DIGITAL_DIRECT",
-          "value": 90.3,
-          "sharePercent": 22,
-          "lossRatio": 72
-        },
-        { "name": "AGENTS", "value": 49.6, "sharePercent": 13, "lossRatio": 66 }
-      ]
+      "Brokers": {
+        "value": 62.5,
+        "sharePercent": 70,
+        "lossRatio": 82
+      },
+      "DIGITAL_DIRECT": {
+        "value": 17.9,
+        "sharePercent": 20,
+        "lossRatio": 75
+      },
+      "Agents": {
+        "value": 8.9,
+        "sharePercent": 10,
+        "lossRatio": 78
+      }
     },
     "operationalEfficiency": {
-      "slaSummary": { "met": 8, "total": 10 },
+      "slaSummary": { "met": 5, "total": 10 },
       "turnaroundTime": [
-        { "process": "UNDERWRITING", "days": 2.5, "benchmark": 3.0 },
-        { "process": "POLICY_ISSUANCE", "days": 0.8, "benchmark": 1.2 },
-        { "process": "CLAIMS_ADJUDICATION", "days": 4.3, "benchmark": 5.0 }
+        { "process": "UNDERWRITING", "days": 7.5, "benchmark": 3.0 },
+        { "process": "POLICY_ISSUANCE", "days": 2.8, "benchmark": 1.2 },
+        { "process": "CLAIMS_ADJUDICATION", "days": 21.0, "benchmark": 5.0 }
       ],
       "slaItems": [
         {
           "name": "Customer Support Response",
-          "percent": 97,
-          "status": "GREEN"
+          "percent": 80,
+          "status": "AMBER"
         },
-        { "name": "Claim Payment Dispatch", "percent": 91, "status": "GREEN" },
+        { "name": "Claim Payment Dispatch", "percent": 72, "status": "AMBER" },
         {
-          "name": "Network Hospital Addition",
-          "percent": 83,
-          "status": "GREEN"
+          "name": "Forensic Investigation Completion",
+          "percent": 55,
+          "status": "RED"
         },
-        { "name": "Complex Case Resolution", "percent": 70, "status": "AMBER" }
+        { "name": "Complex Case Resolution", "percent": 42, "status": "RED" }
       ]
     }
   },
@@ -423,105 +419,101 @@
     "year": 2024,
     "meta": {
       "fiscalYear": 2024,
-      "quarter": "Q4",
-      "product": "ALL",
-      "region": "ALL",
+      "quarter": "Q2",
+      "product": "MARINE_CARGO",
+      "region": "MIDDLE_EAST_AFRICA",
       "currency": "USD",
       "unit": "MILLION",
-      "generatedAt": "2024-12-31T14:35:00Z"
+      "generatedAt": "2024-06-30T12:00:00Z"
     },
     "kpis": {
       "grossWrittenPremium": {
-        "value": 428.5,
-        "yoyChangePercent": 5.7,
+        "value": 157.6,
+        "yoyChangePercent": 11.3,
         "trend": "up"
       },
       "netEarnedPremium": {
-        "value": 384.2,
-        "yoyChangePercent": 3.6,
+        "value": 138.4,
+        "yoyChangePercent": 10.7,
         "trend": "up"
       },
       "claimsIncurred": {
-        "value": 242.1,
-        "yoyChangePercent": 0.8,
+        "value": 88.6,
+        "yoyChangePercent": 6.4,
         "trend": "up"
       },
-      "lossRatio": { "value": 63.0, "target": 60.9, "variance": 2.1 },
+      "lossRatio": { "value": 64.0, "target": 66.0, "variance": -2.0 },
       "combinedRatio": {
-        "value": 92.4,
-        "yoyChangePercent": -0.8,
-        "trend": "down"
+        "value": 91.8,
+        "yoyChangePercent": -3.5,
+        "trend": "up"
       },
-      "operatingProfit": { "value": 48.6, "status": "ON_TRACK" }
+      "operatingProfit": { "value": 31.4, "status": "ON_TRACK" }
     },
     "claimsRisk": {
       "claimsVolumeTrend": [
-        { "month": "Jan", "current": 15000, "previous": 14200 },
-        { "month": "Feb", "current": 15800, "previous": 15000 },
-        { "month": "Mar", "current": 16200, "previous": 15500 },
-        { "month": "Apr", "current": 17500, "previous": 16000 },
-        { "month": "May", "current": 16800, "previous": 15800 },
-        { "month": "Jun", "current": 18000, "previous": 17000 },
-        { "month": "Jul", "current": 19000, "previous": 17800 },
-        { "month": "Aug", "current": 18500, "previous": 17500 },
-        { "month": "Sep", "current": 20000, "previous": 18800 },
-        { "month": "Oct", "current": 19500, "previous": 18200 },
-        { "month": "Nov", "current": 20500, "previous": 19200 },
-        { "month": "Dec", "current": 21500, "previous": 20000 }
+        { "month": "Jan", "current": 3100, "previous": 2800 },
+        { "month": "Feb", "current": 2900, "previous": 2700 },
+        { "month": "Mar", "current": 3300, "previous": 2950 },
+        { "month": "Apr", "current": 3600, "previous": 3200 },
+        { "month": "May", "current": 3800, "previous": 3400 },
+        { "month": "Jun", "current": 4000, "previous": 3600 },
+        { "month": "Jul", "current": 4200, "previous": 3800 },
+        { "month": "Aug", "current": 4100, "previous": 3700 },
+        { "month": "Sep", "current": 4400, "previous": 4000 },
+        { "month": "Oct", "current": 4300, "previous": 3900 },
+        { "month": "Nov", "current": 4600, "previous": 4200 },
+        { "month": "Dec", "current": 4900, "previous": 4500 }
       ],
       "settlement": {
-        "ratio": 89,
-        "target": 85,
-        "avgProcessingDays": 5.6,
-        "improvementDays": 1.2
+        "ratio": 85,
+        "target": 84,
+        "avgProcessingDays": 9.1,
+        "improvementDays": 0.9
       }
     },
     "portfolioRetention": {
-      "renewalMix": { "renewalPercent": 72, "newBusinessPercent": 28 },
-      "overallRetentionRate": 94.2,
-      "lapseRatio": 5.8,
-      "segmentRetention": { "corporate": 98, "individual": 91 },
+      "renewalMix": { "renewalPercent": 71, "newBusinessPercent": 29 },
+      "overallRetentionRate": 92.8,
+      "lapseRatio": 7.2,
+      "segmentRetention": { "corporate": 96, "individual": 87 },
       "status": "STABLE",
-      "insight": "Corporate retention remains strong while individual segment stabilizes."
+      "insight": "Expanding Red Sea trade route diversions have increased cargo volumes and driven new policy uptake across MEA ports."
     },
     "distributionPerformance": {
       "metric": "PREMIUM",
-      "channels": [
-        {
-          "name": "BROKERS",
-          "value": 278.5,
-          "sharePercent": 65,
-          "lossRatio": 58
-        },
-        {
-          "name": "DIGITAL_DIRECT",
-          "value": 94.2,
-          "sharePercent": 22,
-          "lossRatio": 74
-        },
-        { "name": "AGENTS", "value": 55.8, "sharePercent": 13, "lossRatio": 65 }
-      ]
+      "Brokers": {
+        "value": 110.3,
+        "sharePercent": 70,
+        "lossRatio": 62
+      },
+      "DIGITAL_DIRECT": {
+        "value": 23.6,
+        "sharePercent": 15,
+        "lossRatio": 68
+      },
+      "Agents": {
+        "value": 23.7,
+        "sharePercent": 15,
+        "lossRatio": 65
+      }
     },
     "operationalEfficiency": {
       "slaSummary": { "met": 8, "total": 10 },
       "turnaroundTime": [
-        { "process": "UNDERWRITING", "days": 2.4, "benchmark": 3.0 },
-        { "process": "POLICY_ISSUANCE", "days": 0.8, "benchmark": 1.2 },
-        { "process": "CLAIMS_ADJUDICATION", "days": 4.1, "benchmark": 5.0 }
+        { "process": "UNDERWRITING", "days": 3.1, "benchmark": 3.0 },
+        { "process": "POLICY_ISSUANCE", "days": 1.3, "benchmark": 1.2 },
+        { "process": "CLAIMS_ADJUDICATION", "days": 5.4, "benchmark": 5.0 }
       ],
       "slaItems": [
         {
           "name": "Customer Support Response",
-          "percent": 98,
+          "percent": 94,
           "status": "GREEN"
         },
-        { "name": "Claim Payment Dispatch", "percent": 92, "status": "GREEN" },
-        {
-          "name": "Network Hospital Addition",
-          "percent": 81,
-          "status": "AMBER"
-        },
-        { "name": "Complex Case Resolution", "percent": 65, "status": "RED" }
+        { "name": "Claim Payment Dispatch", "percent": 91, "status": "GREEN" },
+        { "name": "Surveyor Assignment", "percent": 83, "status": "AMBER" },
+        { "name": "Complex Case Resolution", "percent": 74, "status": "AMBER" }
       ]
     }
   }

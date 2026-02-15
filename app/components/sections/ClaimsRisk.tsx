@@ -128,46 +128,92 @@ export default function ClaimsRisk({ data }: any) {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              gap: 2,
             }}
           >
-            <Box sx={{ width: 120, height: 120, position: "relative" }}>
-              <ResponsiveContainer>
-                <PieChart>
-                  <Pie
-                    data={pieData}
-                    innerRadius={45}
-                    outerRadius={60}
-                    dataKey="value"
-                    startAngle={90}
-                    endAngle={-270}
-                  >
-                    <Cell fill="#f59e0b" />
-                    <Cell fill="#f3f4f6" />
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
+            {/* Top heading */}
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ fontWeight: 500 }}
+            >
+              Settlement Ratio
+            </Typography>
 
-              {/* Center Percentage */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 700,
-                  fontSize: 20,
-                }}
-              >
-                {data?.settlement?.ratio || 0}%
-              </Box>
+            {/* Pie chart with dynamic color */}
+            <Box sx={{ width: 120, height: 120, position: "relative" }}>
+              {(() => {
+                const ratio = data?.settlement?.ratio || 0;
+
+                // Determine color based on ratio
+                let pieColor = "#f59e0b"; // amber default
+                if (ratio >= 85)
+                  pieColor = "#16a34a"; // green
+                else if (ratio < 60) pieColor = "#dc2626"; // red
+
+                return (
+                  <>
+                    <ResponsiveContainer>
+                      <PieChart>
+                        <Pie
+                          data={pieData}
+                          innerRadius={45}
+                          outerRadius={60}
+                          dataKey="value"
+                          startAngle={90}
+                          endAngle={-270}
+                        >
+                          <Cell fill={pieColor} />
+                          <Cell fill="#f3f4f6" />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+
+                    {/* Center Percentage and Target */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography
+                        sx={{ fontWeight: 700, fontSize: 20, color: pieColor }}
+                      >
+                        {ratio}%
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          fontWeight: 400,
+                          fontSize: 12,
+                          color: "text.secondary",
+                          mt: 0.5,
+                        }}
+                      >
+                        Target 85%
+                      </Typography>
+                    </Box>
+                  </>
+                );
+              })()}
             </Box>
 
-            <Typography variant="body2" color="text.secondary" mt={1}>
-              Settlement Ratio
+            {/* Bottom statement */}
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              textAlign="center"
+              sx={{ maxWidth: 180, mt: 1 }}
+            >
+              Average Processing time decreased by{" "}
+              {data?.settlement?.avgProcessingDays || 0} days this year.
             </Typography>
           </Box>
         </Box>
