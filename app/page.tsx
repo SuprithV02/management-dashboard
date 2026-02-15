@@ -11,7 +11,7 @@ import Footer from "./components/layout/Footer";
 import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
-  const [selectedYear, setSelectedYear] = useState(2024);
+  const [selectedYear, setSelectedYear] = useState(2025);
   const [data, setData] = useState<any>(null);
 
   console.log("Selected Year:", selectedYear);
