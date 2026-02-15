@@ -14,7 +14,7 @@ import PieChartIcon from "@mui/icons-material/PieChart";
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-export default function PortfolioRetention() {
+export default function PortfolioRetention({ data }: any) {
   const theme = useTheme();
 
   // Data
@@ -23,8 +23,8 @@ export default function PortfolioRetention() {
   const lapseRatio = 5.8;
 
   const pieData = [
-    { name: "Renewals", value: renewals },
-    { name: "New Biz", value: newBiz },
+    { name: "Renewals", value: data?.renewalMix?.renewalPercent },
+    { name: "New Biz", value: data?.renewalMix?.newBusinessPercent },
   ];
 
   return (
@@ -101,7 +101,7 @@ export default function PortfolioRetention() {
                   fontSize: 24,
                 }}
               >
-                {renewals}%
+                {data?.renewalMix?.renewalPercent || 0}%
               </Box>
             </Box>
 
@@ -136,7 +136,7 @@ export default function PortfolioRetention() {
                   fontWeight={600}
                   color="primary.main"
                 >
-                  {renewals}%
+                  {data?.renewalMix?.renewalPercent || 0}%
                 </Typography>
               </Box>
 
@@ -162,7 +162,7 @@ export default function PortfolioRetention() {
                   fontWeight={600}
                   sx={{ color: theme.palette.primary.light }}
                 >
-                  {newBiz}%
+                  {data?.renewalMix?.newBusinessPercent || 0}%
                 </Typography>
               </Box>
             </Box>
@@ -187,13 +187,13 @@ export default function PortfolioRetention() {
                   fontWeight={700}
                   color="primary.main"
                 >
-                  {renewals}%
+                  {data?.overallRetentionRate || 0}%
                 </Typography>
               </Box>
 
               <LinearProgress
                 variant="determinate"
-                value={renewals}
+                value={data?.overallRetentionRate || 0}
                 sx={{
                   height: 8,
                   borderRadius: 5,
@@ -218,13 +218,13 @@ export default function PortfolioRetention() {
                   fontWeight={700}
                   sx={{ color: theme.palette.error.main }}
                 >
-                  {lapseRatio}%
+                  {data?.lapseRatio || 0}%
                 </Typography>
               </Box>
 
               <LinearProgress
                 variant="determinate"
-                value={lapseRatio}
+                value={data?.lapseRatio || 0}
                 sx={{
                   height: 8,
                   borderRadius: 5,

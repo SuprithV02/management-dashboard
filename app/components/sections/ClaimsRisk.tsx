@@ -17,27 +17,11 @@ import {
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import Divider from "@mui/material/Divider";
 
-const claimsData = [
-  { month: "Jan", current: 15000, previous: 14200 },
-  { month: "Feb", current: 15800, previous: 15000 },
-  { month: "Mar", current: 16200, previous: 15500 },
-  { month: "Apr", current: 17500, previous: 16000 },
-  { month: "May", current: 16800, previous: 15800 },
-  { month: "Jun", current: 18000, previous: 17000 },
-  { month: "Jul", current: 19000, previous: 17800 },
-  { month: "Aug", current: 18500, previous: 17500 },
-  { month: "Sep", current: 20000, previous: 18800 },
-  { month: "Oct", current: 19500, previous: 18200 },
-  { month: "Nov", current: 20500, previous: 19200 },
-  { month: "Dec", current: 21500, previous: 20000 },
-];
-
-const settlementRatio = 89;
-
-export default function ClaimsRisk() {
+export default function ClaimsRisk({ data }: any) {
+  console.log("ClaimsRisk component received data:", data?.settlement);
   const pieData = [
-    { name: "Settled", value: settlementRatio },
-    { name: "Remaining", value: 100 - settlementRatio },
+    { name: "Settled", value: data?.settlement?.ratio },
+    { name: "Remaining", value: 100 - (data?.settlement?.ratio || 0) },
   ];
 
   return (
@@ -110,7 +94,7 @@ export default function ClaimsRisk() {
             <Box sx={{ height: 210 }}>
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                  data={claimsData}
+                  data={data?.claimsVolumeTrend || []}
                   margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
                 >
                   <XAxis dataKey="month" interval={0} tick={{ fontSize: 12 }} />
@@ -178,7 +162,7 @@ export default function ClaimsRisk() {
                   fontSize: 20,
                 }}
               >
-                {settlementRatio}%
+                {data?.settlement?.ratio || 0}%
               </Box>
             </Box>
 

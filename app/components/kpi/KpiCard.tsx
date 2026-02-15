@@ -27,8 +27,18 @@ export default function KpiCard({
       sx={{
         borderRadius: 3,
         height: "100%",
-        backgroundColor: highlight ? "primary.main" : "#fff",
-        color: highlight ? "#fff" : "inherit",
+        backgroundColor:
+          trend === "AT_RISK" // <-- red background if AT_RISK
+            ? "#d32f2f"
+            : highlight
+              ? "primary.main"
+              : "#fff",
+        color:
+          trend === "AT_RISK" // white text on red
+            ? "#fff"
+            : highlight
+              ? "#fff"
+              : "inherit",
       }}
     >
       <CardContent>

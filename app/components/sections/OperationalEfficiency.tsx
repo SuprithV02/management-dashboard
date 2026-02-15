@@ -12,34 +12,46 @@ import {
 } from "@mui/material";
 
 import BoltIcon from "@mui/icons-material/Bolt";
-export default function OperationalEfficiency() {
+export default function OperationalEfficiency({ data }: any) {
   const theme = useTheme();
 
   const tatData = [
-    { name: "Underwriting", value: 2.4, max: 5 },
-    { name: "Policy Issuance", value: 0.8, max: 5 },
-    { name: "Claims Adjudication", value: 4.1, max: 5 },
+    {
+      name: "Underwriting",
+      value: data?.turnaroundTime[0]?.benchmark || 0,
+      max: data?.turnaroundTime[0]?.days || 0,
+    },
+    {
+      name: "Policy Issuance",
+      value: data?.turnaroundTime[1]?.benchmark || 0,
+      max: data?.turnaroundTime[1]?.days || 0,
+    },
+    {
+      name: "Claims Adjudication",
+      value: data?.turnaroundTime[2]?.benchmark || 0,
+      max: data?.turnaroundTime[2]?.days || 0,
+    },
   ];
 
   const slaData = [
     {
       name: "Customer Support Response",
-      percent: 98,
+      percent: data?.slaItems[0]?.percent,
       color: theme.palette.success.main,
     },
     {
       name: "Claim Payment Dispatch",
-      percent: 92,
+      percent: data?.slaItems[1]?.percent,
       color: theme.palette.success.main,
     },
     {
       name: "Network Hospital Addition",
-      percent: 81,
+      percent: data?.slaItems[2]?.percent,
       color: theme.palette.warning.main,
     },
     {
       name: "Complex Case Resolution",
-      percent: 65,
+      percent: data?.slaItems[3]?.percent,
       color: theme.palette.error.main,
     },
   ];

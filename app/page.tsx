@@ -55,35 +55,35 @@ export default function DashboardPage() {
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
                 title="Gross Written Premium"
-                value="$428.5M"
-                trend="+12.4% YoY"
-                trendType="up"
+                value={`$${data?.kpis?.grossWrittenPremium?.value || 0}M`}
+                trend={`$${data?.kpis?.grossWrittenPremium?.yoyChangePercent || 0}% YoY`}
+                trendType={data?.kpis?.grossWrittenPremium?.trend}
               />
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
                 title="Net Earned Premium"
-                value="$384.2M"
-                trend="+8.1% YoY"
-                trendType="up"
+                value={`$${data?.kpis?.netEarnedPremium?.value || 0}M`}
+                trend={`+${data?.kpis?.netEarnedPremium?.yoyChangePercent || 0}% YoY`}
+                trendType={data?.kpis?.grossWrittenPremium?.trend}
               />
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
                 title="Claims Incurred"
-                value="$242.1M"
-                trend="+14.2% YoY"
-                trendType="down"
+                value={`$${data?.kpis?.claimsIncurred?.value || 0}M`}
+                trend={`+${data?.kpis?.claimsIncurred?.yoyChangePercent || 0}% YoY`}
+                trendType={data?.kpis?.grossWrittenPremium?.trend}
               />
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
                 title="Loss Ratio"
-                value="63.0%"
-                trend="+2.1% Target"
+                value={`${data?.kpis?.lossRatio?.value || 0}%`}
+                trend={`+${data?.kpis?.lossRatio?.variance || 0}% YoY`}
                 trendType="warning"
               />
             </Grid>
@@ -91,17 +91,17 @@ export default function DashboardPage() {
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
                 title="Combined Ratio"
-                value="92.4%"
-                trend="-0.8% YoY"
-                trendType="up"
+                value={`${data?.kpis?.combinedRatio?.value || 0}%`}
+                trend={`-${data?.kpis?.combinedRatio?.yoyChangePercent || 0}% YoY`}
+                trendType={data?.kpis?.combinedRatio?.trend}
               />
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
                 title="Operating Profit"
-                value="$48.6M"
-                trend="On Track"
+                value={`$${data?.kpis?.operatingProfit?.value || 0}M`}
+                trend={data?.kpis?.operatingProfit?.status}
                 highlight
               />
             </Grid>
@@ -111,19 +111,21 @@ export default function DashboardPage() {
           <Box sx={{ mt: 6 }}>
             <Grid container spacing={4}>
               <Grid size={{ xs: 12, xl: 6 }}>
-                <ClaimsRisk />
+                <ClaimsRisk data={data?.claimsRisk} />
               </Grid>
 
               <Grid size={{ xs: 12, xl: 6 }}>
-                <PortfolioRetention />
+                <PortfolioRetention data={data?.portfolioRetention} />
               </Grid>
 
               <Grid size={{ xs: 12, xl: 6 }}>
-                <DistributionPerformance />
+                <DistributionPerformance
+                  mockData={data?.distributionPerformance}
+                />
               </Grid>
 
               <Grid size={{ xs: 12, xl: 6 }}>
-                <OperationalEfficiency />
+                <OperationalEfficiency data={data?.operationalEfficiency} />
               </Grid>
             </Grid>
           </Box>

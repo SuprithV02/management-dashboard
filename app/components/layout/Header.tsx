@@ -58,27 +58,13 @@ export default function Header({ selectedYear, onYearChange }: HeaderProps) {
               </Select>
             </FormControl>
 
-            <FormControl size="small">
-              <Select defaultValue="All Products">
-                <MenuItem value="All Products">All Products</MenuItem>
-                <MenuItem value="Health Plus">Health Plus</MenuItem>
-              </Select>
-            </FormControl>
-
-            <FormControl size="small">
-              <Select defaultValue="All Regions">
-                <MenuItem value="All Regions">All Regions</MenuItem>
-                <MenuItem value="North">North</MenuItem>
-              </Select>
-            </FormControl>
-
-            <Button
+            {/* <Button
               variant="contained"
               size="small"
               sx={{ textTransform: "none" }}
             >
               Export PDF
-            </Button>
+            </Button> */}
           </Box>
         </Toolbar>
       </Container>

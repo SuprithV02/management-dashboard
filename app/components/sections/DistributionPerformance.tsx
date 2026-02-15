@@ -14,32 +14,35 @@ import BusinessIcon from "@mui/icons-material/Business";
 import ComputerIcon from "@mui/icons-material/Computer";
 import GroupsIcon from "@mui/icons-material/Groups";
 import InsightsIcon from "@mui/icons-material/Insights";
+import { mock } from "node:test";
 
-export default function DistributionPerformance() {
+export default function DistributionPerformance({ mockData }: any) {
   const theme = useTheme();
+
+  console.log(mockData);
 
   const data = [
     {
       name: "Brokers",
-      percent: 65,
-      value: "$278.5M",
-      lr: 58,
+      percent: mockData?.Brokers?.sharePercent || 0,
+      value: `$${mockData?.Brokers?.value || 0}M` || 0,
+      lr: mockData?.Brokers?.lossRatio || 0,
       lrColor: theme.palette.success.main,
       icon: <BusinessIcon fontSize="small" />,
     },
     {
       name: "Digital / Direct",
-      percent: 22,
-      value: "$94.5M",
-      lr: 74,
+      percent: mockData?.DIGITAL_DIRECT?.sharePercent || 0,
+      value: `$${mockData?.DIGITAL_DIRECT?.value || 0}M` || 0,
+      lr: mockData?.DIGITAL_DIRECT?.lossRatio || 0,
       lrColor: theme.palette.error.main,
       icon: <ComputerIcon fontSize="small" />,
     },
     {
       name: "Agents",
-      percent: 13,
-      value: "$55.8M",
-      lr: 65,
+      percent: mockData?.Agents?.sharePercent || 0,
+      value: `$${mockData?.Agents?.value || 0}M` || 0,
+      lr: mockData?.Agents?.lossRatio || 0,
       lrColor: theme.palette.warning.main,
       icon: <GroupsIcon fontSize="small" />,
     },
