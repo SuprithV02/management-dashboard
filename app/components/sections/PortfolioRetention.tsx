@@ -11,22 +11,23 @@ import {
 } from "@mui/material";
 
 import PieChartIcon from "@mui/icons-material/PieChart";
-
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 export default function PortfolioRetention({ data }: any) {
   const theme = useTheme();
 
-  // Data
+  const renewalPercent = data?.renewalMix?.renewalPercent || 0;
+  const newBizPercent = data?.renewalMix?.newBusinessPercent || 0;
+
   const pieData = [
-    { name: "Renewals", value: data?.renewalMix?.renewalPercent || 0 },
-    { name: "New Biz", value: data?.renewalMix?.newBusinessPercent || 0 },
+    { name: "Renewals", value: renewalPercent },
+    { name: "New Biz", value: newBizPercent },
   ];
 
-  // Determine status color
   const getStatusColor = (status: string | undefined) => {
-    if (status === "STABLE" || status === "STRONG") return "#15803d"; // green
-    return "#b91c1c"; // red
+    if (status === "STABLE" || status === "STRONG")
+      return theme.palette.success.light;
+    return theme.palette.error.light;
   };
 
   return (
@@ -38,7 +39,6 @@ export default function PortfolioRetention({ data }: any) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: 1,
             mb: 2,
           }}
         >
@@ -51,34 +51,26 @@ export default function PortfolioRetention({ data }: any) {
             </Typography>
           </Box>
 
-          {/* Status Box */}
           <Box
             sx={{
               backgroundColor: getStatusColor(data?.status),
               borderRadius: 1,
               px: 2,
               py: 0.5,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               minWidth: 80,
+              textAlign: "center",
             }}
           >
-            <Typography
-              variant="caption"
-              fontWeight={600}
-              sx={{ color: "#fff" }}
-            >
+            <Typography variant="caption" fontWeight={600} color="#fff">
               {data?.status || "UNKNOWN"}
             </Typography>
           </Box>
         </Box>
 
-        {/* Light Grey Divider */}
-        <Divider sx={{ mb: 3, backgroundColor: "#e5e7eb" }} />
+        <Divider sx={{ mb: 3 }} />
 
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-          {/* LEFT SIDE - DONUT */}
+          {/* LEFT - DONUT */}
           <Box
             sx={{
               flex: 1,
@@ -88,8 +80,18 @@ export default function PortfolioRetention({ data }: any) {
               alignItems: "center",
             }}
           >
-            {/* Donut Chart */}
-            <Box sx={{ width: 160, height: 160, position: "relative" }}>
+            <Box
+              sx={{
+                width: 160,
+                height: 160,
+                position: "relative",
+                transition: "transform 0.25s ease",
+                cursor: "pointer",
+                "&:hover": {
+                  transform: "translateY(-4px) scale(1.02)",
+                },
+              }}
+            >
               <ResponsiveContainer>
                 <PieChart>
                   <Pie
@@ -100,13 +102,15 @@ export default function PortfolioRetention({ data }: any) {
                     startAngle={90}
                     endAngle={-270}
                   >
-                    <Cell fill={theme.palette.primary.main} />
+                    {/* Renewals → Light Blue */}
                     <Cell fill={theme.palette.primary.light} />
+                    {/* New Biz → Grey */}
+                    <Cell fill={theme.palette.grey[300]} />
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
 
-              {/* Center Percentage */}
+              {/* Center Value */}
               <Box
                 sx={{
                   position: "absolute",
@@ -116,38 +120,16 @@ export default function PortfolioRetention({ data }: any) {
                   justifyContent: "center",
                   fontWeight: 700,
                   fontSize: 24,
+                  color: theme.palette.primary.light,
                 }}
               >
-                {data?.renewalMix?.renewalPercent || 0}%
+                {renewalPercent}%
               </Box>
             </Box>
 
             {/* Indicators */}
-            <Box
-              sx={{ mt: 3, display: "flex", justifyContent: "center", gap: 4 }}
-            >
-              {/* Renewals */}
-              <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-                <Box
-                  sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    backgroundColor: theme.palette.primary.main,
-                  }}
-                />
-                <Typography variant="caption">Renewals</Typography>
-                <Typography
-                  variant="caption"
-                  fontWeight={600}
-                  color="primary.main"
-                >
-                  {data?.renewalMix?.renewalPercent || 0}%
-                </Typography>
-              </Box>
-
-              {/* New Biz */}
-              <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
+            <Box sx={{ mt: 3, display: "flex", gap: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <Box
                   sx={{
                     width: 8,
@@ -156,21 +138,30 @@ export default function PortfolioRetention({ data }: any) {
                     backgroundColor: theme.palette.primary.light,
                   }}
                 />
-                <Typography variant="caption">New Biz</Typography>
-                <Typography
-                  variant="caption"
-                  fontWeight={600}
-                  sx={{ color: theme.palette.primary.light }}
-                >
-                  {data?.renewalMix?.newBusinessPercent || 0}%
+                <Typography variant="body2" color="text.secondary">
+                  Renewals {renewalPercent}%
+                </Typography>
+              </Box>
+
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Box
+                  sx={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    backgroundColor: theme.palette.grey[300],
+                  }}
+                />
+                <Typography variant="body2" color="text.secondary">
+                  New Biz {newBizPercent}%
                 </Typography>
               </Box>
             </Box>
           </Box>
 
-          {/* RIGHT SIDE - BARS */}
+          {/* RIGHT - PROGRESS BARS */}
           <Box sx={{ flex: 1, minWidth: 250 }}>
-            {/* Overall Retention Rate */}
+            {/* Overall Retention */}
             <Box mb={4}>
               <Box
                 sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
@@ -181,7 +172,7 @@ export default function PortfolioRetention({ data }: any) {
                 <Typography
                   variant="body2"
                   fontWeight={700}
-                  color="primary.main"
+                  color="success.main"
                 >
                   {data?.overallRetentionRate || 0}%
                 </Typography>
@@ -190,7 +181,14 @@ export default function PortfolioRetention({ data }: any) {
               <LinearProgress
                 variant="determinate"
                 value={data?.overallRetentionRate || 0}
-                sx={{ height: 8, borderRadius: 5 }}
+                sx={{
+                  height: 8,
+                  borderRadius: 5,
+                  backgroundColor: theme.palette.grey[200], // track
+                  "& .MuiLinearProgress-bar": {
+                    backgroundColor: theme.palette.success.light, // green bar
+                  },
+                }}
               />
             </Box>
 
@@ -202,11 +200,7 @@ export default function PortfolioRetention({ data }: any) {
                 <Typography variant="body2" fontWeight={600}>
                   Lapse Ratio
                 </Typography>
-                <Typography
-                  variant="body2"
-                  fontWeight={700}
-                  sx={{ color: theme.palette.error.main }}
-                >
+                <Typography variant="body2" fontWeight={700} color="error.main">
                   {data?.lapseRatio || 0}%
                 </Typography>
               </Box>
@@ -217,14 +211,15 @@ export default function PortfolioRetention({ data }: any) {
                 sx={{
                   height: 8,
                   borderRadius: 5,
+                  backgroundColor: theme.palette.grey[200], // track
                   "& .MuiLinearProgress-bar": {
-                    backgroundColor: theme.palette.error.main,
+                    backgroundColor: theme.palette.error.light, // red bar
                   },
                 }}
               />
             </Box>
 
-            {/* Insight Box */}
+            {/* Insight */}
             {data?.insight && (
               <Box
                 sx={{

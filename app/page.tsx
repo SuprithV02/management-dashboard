@@ -14,20 +14,15 @@ export default function DashboardPage() {
   const [selectedYear, setSelectedYear] = useState<string>("2025");
   const [data, setData] = useState<any>(null);
 
-  console.log("Selected Year:", selectedYear);
-
   useEffect(() => {
     async function fetchData() {
       const yearToFetch = selectedYear || "FY 2024"; // fallback if selectedYear is empty
-      console.log("Fetching data for:", yearToFetch);
 
       const res = await fetch(
         `/api/dashboard?year=${encodeURIComponent(yearToFetch)}`,
       );
 
-      console.log("res", res);
       const json = await res.json();
-      console.log("API response:", json);
       setData(json);
     }
 
@@ -60,7 +55,7 @@ export default function DashboardPage() {
           <Grid container spacing={3}>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
-                title="Gross Written Premium"
+                title="Gross Premium"
                 value={`$${data?.kpis?.grossWrittenPremium?.value || 0}M`}
                 trend={`$${data?.kpis?.grossWrittenPremium?.yoyChangePercent || 0}% YoY`}
                 trendType={data?.kpis?.grossWrittenPremium?.trend}
@@ -69,7 +64,7 @@ export default function DashboardPage() {
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>
               <KpiCard
-                title="Net Earned Premium"
+                title="Net Premium"
                 value={`$${data?.kpis?.netEarnedPremium?.value || 0}M`}
                 trend={`+${data?.kpis?.netEarnedPremium?.yoyChangePercent || 0}% YoY`}
                 trendType={data?.kpis?.grossWrittenPremium?.trend}

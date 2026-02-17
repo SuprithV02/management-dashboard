@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 
 import BoltIcon from "@mui/icons-material/Bolt";
+import SLAComplianceList from "../common/SLAComplianceList";
 
 export default function OperationalEfficiency({ data }: any) {
   const theme = useTheme();
@@ -57,14 +58,14 @@ export default function OperationalEfficiency({ data }: any) {
   // Function to get darker SLA color
   const getSLAColor = (percent: number) => {
     if (percent > 90)
-      return "#15803d"; // okayish green
+      return theme.palette.success.light; // okayish green
     else if (percent >= 70)
-      return "#b45309"; // okayish amber
-    else return "#b91c1c"; // okayish red
+      return theme.palette.warning.light; // okayish amber
+    else return theme.palette.error.light; // okayish red
   };
 
   return (
-    <Card elevation={2} sx={{ borderRadius: 3 }}>
+    <Card elevation={2} sx={{ borderRadius: 3, height: "100%" }}>
       <CardContent>
         {/* Header */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
@@ -107,7 +108,14 @@ export default function OperationalEfficiency({ data }: any) {
                 <LinearProgress
                   variant="determinate"
                   value={item.max ? (item.value / item.max) * 100 : 0}
-                  sx={{ height: 6, borderRadius: 5 }}
+                  sx={{
+                    height: 6,
+                    borderRadius: 5,
+                    backgroundColor: theme.palette.grey[200], // track
+                    "& .MuiLinearProgress-bar": {
+                      backgroundColor: theme.palette.primary.light, // fill
+                    },
+                  }}
                 />
               </Box>
             ))}
@@ -115,48 +123,7 @@ export default function OperationalEfficiency({ data }: any) {
 
           {/* RIGHT SIDE: SLA Compliance */}
           <Grid size={{ xs: 12, md: 6 }}>
-            <Typography
-              variant="subtitle2"
-              fontWeight={600}
-              color="text.secondary"
-              mb={3}
-            >
-              SLA COMPLIANCE STATUS
-            </Typography>
-
-            <Grid container spacing={2}>
-              {slaData.map((item) => {
-                const color = getSLAColor(item.percent);
-                return (
-                  <Grid size={{ xs: 12, sm: 6 }} key={item.name}>
-                    <Box
-                      sx={{
-                        borderRadius: 2,
-                        p: 2,
-                        backgroundColor: color,
-                        transition: "background-color 0.3s",
-                      }}
-                    >
-                      <Typography
-                        variant="caption"
-                        color="rgba(255,255,255,0.8)"
-                        sx={{ fontWeight: 500 }}
-                      >
-                        {item.name}
-                      </Typography>
-
-                      <Typography
-                        variant="h6"
-                        fontWeight={700}
-                        sx={{ color: "#fff", mt: 0.5 }}
-                      >
-                        {item.percent}%
-                      </Typography>
-                    </Box>
-                  </Grid>
-                );
-              })}
-            </Grid>
+            <SLAComplianceList title="SLA COMPLIANCE STATUS" data={slaData} />
           </Grid>
         </Grid>
       </CardContent>

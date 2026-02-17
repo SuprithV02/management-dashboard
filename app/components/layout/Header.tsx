@@ -33,8 +33,20 @@ export default function Header({ selectedYear, onYearChange }: HeaderProps) {
           {/* Left Section */}
           <Box>
             <Typography variant="h6" fontWeight={700}>
-              Strategic Executive Overview
+              Welcome, Ajoy Chawla{" "}
+              <Box
+                component="span"
+                sx={{
+                  fontSize: "0.75rem",
+                  fontWeight: 500,
+                  color: "text.secondary",
+                  ml: 1,
+                }}
+              >
+                Managing Director
+              </Box>
             </Typography>
+
             <Typography
               variant="caption"
               sx={{ textTransform: "uppercase", color: "text.secondary" }}

@@ -27,74 +27,82 @@ export default function KpiCard({
       sx={{
         borderRadius: 3,
         height: "100%",
+        cursor: "pointer",
+        transition: "transform 0.25s ease, box-shadow 0.25s ease",
         backgroundColor:
-          trend === "AT_RISK" // <-- red background if AT_RISK
-            ? "#d32f2f"
+          trend === "AT_RISK"
+            ? "error.light"
             : highlight
-              ? "primary.main"
+              ? "primary.light"
               : "#fff",
         color:
-          trend === "AT_RISK" // white text on red
+          trend === "AT_RISK"
             ? "#fff"
             : highlight
-              ? "#fff"
-              : "inherit",
+              ? "primary.contrastText"
+              : "text.primary",
+
+        "&:hover": {
+          transform: "translateY(-6px) scale(1.02)",
+          boxShadow: 8, // MUI elevation shadow
+        },
       }}
     >
       <CardContent>
-        {/* TITLE */}
+        {/* VALUE + TREND ROW */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: 700,
+              color: highlight ? "#fff" : "#111",
+            }}
+          >
+            {value}
+          </Typography>
+
+          {trend && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 0.5,
+                color: highlight
+                  ? "#fff"
+                  : isUp
+                    ? "success.main"
+                    : isDown
+                      ? "error.main"
+                      : "warning.main",
+              }}
+            >
+              {isUp && <TrendingUpIcon fontSize="small" />}
+              {isDown && <TrendingDownIcon fontSize="small" />}
+
+              <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                {trend}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+
+        {/* TITLE BELOW VALUE */}
         <Typography
           variant="subtitle2"
           sx={{
             fontWeight: 600,
+            mt: 1,
             color: highlight ? "rgba(255,255,255,0.8)" : "text.secondary",
-            mb: 1,
           }}
         >
           {title}
         </Typography>
-
-        {/* VALUE */}
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: 700,
-            color: highlight ? "#fff" : "#111",
-          }}
-        >
-          {value}
-        </Typography>
-
-        {/* TREND */}
-        {trend && (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 0.5,
-              mt: 1.5,
-              color: highlight
-                ? "#fff"
-                : isUp
-                  ? "success.main"
-                  : isDown
-                    ? "error.main"
-                    : "warning.main",
-            }}
-          >
-            {isUp && <TrendingUpIcon fontSize="small" />}
-            {isDown && <TrendingDownIcon fontSize="small" />}
-
-            <Typography
-              variant="caption"
-              sx={{
-                fontWeight: 600,
-              }}
-            >
-              {trend}
-            </Typography>
-          </Box>
-        )}
       </CardContent>
     </Card>
   );

@@ -127,6 +127,10 @@ export default function DistributionPerformance({ mockData }: any) {
               sx={{
                 height: 8,
                 borderRadius: 5,
+                backgroundColor: theme.palette.grey[200], // track (grey)
+                "& .MuiLinearProgress-bar": {
+                  backgroundColor: theme.palette.primary.light, // fill (light blue)
+                },
               }}
             />
           </Box>

@@ -38,10 +38,10 @@ body {
   --muted-foreground: #64748b; /* slate-500 */
 
   /* Brand */
-  --primary: #2563eb; /* blue-600 */
+  --primary: #60a5fa; /* blue-600 */
   --success: #16a34a;
   --warning: #f59e0b;
-  --danger: #dc2626;
+  --danger: #fca5a5;
 }
 
 /* ---------- Optional Dark Mode Ready ---------- */

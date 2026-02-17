@@ -216,12 +216,12 @@
     },
     "kpis": {
       "grossWrittenPremium": {
-        "value": 1104.5,
+        "value": 904.5,
         "yoyChangePercent": 14.6,
         "trend": "up"
       },
       "netEarnedPremium": {
-        "value": 1055.2,
+        "value": 755.2,
         "yoyChangePercent": 13.8,
         "trend": "up"
       },
