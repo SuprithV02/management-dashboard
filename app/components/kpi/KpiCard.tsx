@@ -1,7 +1,10 @@
 import { Card, CardContent, Typography, Box } from "@mui/material";
-
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import {
+  CARD_HOVER_SX,
+  getTrendColor,
+  TrendIcon,
+  useCardColors,
+} from "./KpiCard.helpers";
 
 interface Props {
   title: string;
@@ -16,10 +19,9 @@ export default function KpiCard({
   value,
   trend,
   trendType,
-  highlight,
+  highlight = false,
 }: Props) {
-  const isUp = trendType === "up";
-  const isDown = trendType === "down";
+  const cardColors = useCardColors(trend, highlight);
 
   return (
     <Card
@@ -29,27 +31,11 @@ export default function KpiCard({
         height: "100%",
         cursor: "pointer",
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
-        backgroundColor:
-          trend === "AT_RISK"
-            ? "error.light"
-            : highlight
-              ? "primary.light"
-              : "#fff",
-        color:
-          trend === "AT_RISK"
-            ? "#fff"
-            : highlight
-              ? "primary.contrastText"
-              : "text.primary",
-
-        "&:hover": {
-          transform: "translateY(-6px) scale(1.02)",
-          boxShadow: 8, // MUI elevation shadow
-        },
+        "&:hover": CARD_HOVER_SX,
+        ...cardColors,
       }}
     >
       <CardContent>
-        {/* VALUE + TREND ROW */}
         <Box
           sx={{
             display: "flex",
@@ -59,10 +45,7 @@ export default function KpiCard({
         >
           <Typography
             variant="h5"
-            sx={{
-              fontWeight: 700,
-              color: highlight ? "#fff" : "#111",
-            }}
+            sx={{ fontWeight: 700, color: highlight ? "#fff" : "#111" }}
           >
             {value}
           </Typography>
@@ -73,18 +56,10 @@ export default function KpiCard({
                 display: "flex",
                 alignItems: "center",
                 gap: 0.5,
-                color: highlight
-                  ? "#fff"
-                  : isUp
-                    ? "success.main"
-                    : isDown
-                      ? "error.main"
-                      : "warning.main",
+                color: getTrendColor(highlight, trendType),
               }}
             >
-              {isUp && <TrendingUpIcon fontSize="small" />}
-              {isDown && <TrendingDownIcon fontSize="small" />}
-
+              <TrendIcon trendType={trendType} />
               <Typography variant="caption" sx={{ fontWeight: 600 }}>
                 {trend}
               </Typography>
@@ -92,7 +67,6 @@ export default function KpiCard({
           )}
         </Box>
 
-        {/* TITLE BELOW VALUE */}
         <Typography
           variant="subtitle2"
           sx={{

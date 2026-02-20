@@ -289,9 +289,9 @@
     "operationalEfficiency": {
       "slaSummary": { "met": 10, "total": 10 },
       "turnaroundTime": [
-        { "process": "UNDERWRITING", "days": 2.1, "benchmark": 3.0 },
-        { "process": "POLICY_ISSUANCE", "days": 0.8, "benchmark": 1.2 },
-        { "process": "CLAIMS_ADJUDICATION", "days": 3.9, "benchmark": 5.0 }
+        { "process": "UNDERWRITING", "days": 4.1, "benchmark": 3.0 },
+        { "process": "POLICY_ISSUANCE", "days": 3.8, "benchmark": 1.2 },
+        { "process": "CLAIMS_ADJUDICATION", "days": 7.9, "benchmark": 5.0 }
       ],
       "slaItems": [
         {

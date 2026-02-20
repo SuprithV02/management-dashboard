@@ -1,82 +1,28 @@
-"use client";
-
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
-  Box,
-  FormControl,
-  Select,
-  MenuItem,
-  Button,
-} from "@mui/material";
+import { AppBar, Box, Container, Toolbar } from "@mui/material";
+import { UserInfo, YearSelector } from "./header.helpers";
 
 interface HeaderProps {
   selectedYear: string;
   onYearChange: (year: string) => void;
 }
 
+const APPBAR_SX = {
+  backgroundColor: "#ffffff",
+  color: "#111827",
+  borderBottom: "1px solid #e5e7eb",
+};
+
 export default function Header({ selectedYear, onYearChange }: HeaderProps) {
   return (
-    <AppBar
-      position="sticky"
-      elevation={1}
-      sx={{
-        backgroundColor: "#ffffff",
-        color: "#111827",
-        borderBottom: "1px solid #e5e7eb",
-      }}
-    >
+    <AppBar position="sticky" elevation={1} sx={APPBAR_SX}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: "space-between", py: 1 }}>
-          {/* Left Section */}
-          <Box>
-            <Typography variant="h6" fontWeight={700}>
-              Welcome, Ajoy Chawla{" "}
-              <Box
-                component="span"
-                sx={{
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
-                  color: "text.secondary",
-                  ml: 1,
-                }}
-              >
-                Managing Director
-              </Box>
-            </Typography>
-
-            <Typography
-              variant="caption"
-              sx={{ textTransform: "uppercase", color: "text.secondary" }}
-            >
-              Health Insurance Division
-            </Typography>
-          </Box>
-
-          {/* Right Section */}
+          <UserInfo />
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-            <FormControl size="small">
-              <Select
-                value={selectedYear} // <-- use controlled value
-                onChange={(e) => onYearChange(e.target.value)}
-              >
-                <MenuItem value="2025">FY 2025</MenuItem>
-                <MenuItem value="2024">FY 2024</MenuItem>
-                <MenuItem value="2023">FY 2023</MenuItem>
-                <MenuItem value="2022">FY 2022</MenuItem>
-                <MenuItem value="2021">FY 2021</MenuItem>
-              </Select>
-            </FormControl>
-
-            {/* <Button
-              variant="contained"
-              size="small"
-              sx={{ textTransform: "none" }}
-            >
-              Export PDF
-            </Button> */}
+            <YearSelector
+              selectedYear={selectedYear}
+              onYearChange={onYearChange}
+            />
           </Box>
         </Toolbar>
       </Container>

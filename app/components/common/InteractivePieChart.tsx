@@ -1,23 +1,10 @@
 "use client";
 
+import { Box, useTheme } from "@mui/material";
 import { useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { Box, Typography, useTheme } from "@mui/material";
-
-interface PieItem {
-  name: string;
-  value: number;
-}
-
-interface Props {
-  data: PieItem[];
-  primaryColor: string;
-  secondaryColor?: string;
-  size?: number;
-  innerRadius?: number;
-  outerRadius?: number;
-  defaultCenterLabel?: string;
-}
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import CenterLabel from "./CenterLabel";
+import { Props } from "./types";
 
 export default function InteractivePieChart({
   data,
@@ -31,15 +18,16 @@ export default function InteractivePieChart({
   const theme = useTheme();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const handleEnter = (_: any, index: number) => {
-    setActiveIndex(index);
-  };
-
-  const handleLeave = () => {
-    setActiveIndex(null);
-  };
-
   const activeData = activeIndex !== null ? data[activeIndex] : null;
+
+  const getCellColor = (index: number) =>
+    index === 0 ? primaryColor : (secondaryColor ?? theme.palette.grey[300]);
+
+  const getCellStyle = (index: number): React.CSSProperties => ({
+    transition: "transform 0.18s ease",
+    transform: activeIndex === index ? "translateY(-3px)" : "translateY(0px)",
+    cursor: "pointer",
+  });
 
   return (
     <Box sx={{ width: size, height: size, position: "relative" }}>
@@ -52,32 +40,20 @@ export default function InteractivePieChart({
             dataKey="value"
             startAngle={90}
             endAngle={-270}
-            onMouseEnter={handleEnter}
-            onMouseLeave={handleLeave}
+            onMouseEnter={(_, index) => setActiveIndex(index)}
+            onMouseLeave={() => setActiveIndex(null)}
           >
             {data.map((_, index) => (
               <Cell
                 key={index}
-                fill={
-                  index === 0
-                    ? primaryColor
-                    : (secondaryColor ?? theme.palette.grey[300])
-                }
-                style={{
-                  transition: "transform 0.18s ease",
-                  transform:
-                    activeIndex === index
-                      ? "translateY(-3px)"
-                      : "translateY(0px)",
-                  cursor: "pointer",
-                }}
+                fill={getCellColor(index)}
+                style={getCellStyle(index)}
               />
             ))}
           </Pie>
         </PieChart>
       </ResponsiveContainer>
 
-      {/* Center Content */}
       <Box
         sx={{
           position: "absolute",
@@ -89,49 +65,12 @@ export default function InteractivePieChart({
           pointerEvents: "none",
         }}
       >
-        {activeData ? (
-          <>
-            <Typography
-              variant="body2"
-              fontWeight={200}
-              fontSize={10}
-              sx={{ color: "text.secondary" }}
-            >
-              {activeData.name}
-            </Typography>
-
-            <Typography
-              sx={{
-                fontWeight: 400,
-                fontSize: 20,
-                color: activeIndex === 0 ? "primary.main" : "text.primary",
-              }}
-            >
-              {activeData.value}%
-            </Typography>
-          </>
-        ) : (
-          <>
-            <Typography
-              sx={{
-                fontWeight: 700,
-                fontSize: 20,
-                color: "primary.main",
-              }}
-            >
-              {data[0].value}%
-            </Typography>
-
-            {defaultCenterLabel && (
-              <Typography
-                variant="caption"
-                sx={{ color: "text.secondary", mt: 0.5 }}
-              >
-                {defaultCenterLabel}
-              </Typography>
-            )}
-          </>
-        )}
+        <CenterLabel
+          activeData={activeData}
+          activeIndex={activeIndex}
+          defaultValue={data[0].value}
+          defaultCenterLabel={defaultCenterLabel}
+        />
       </Box>
     </Box>
   );
